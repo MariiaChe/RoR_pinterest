@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/index'
   devise_for :users
   resources :pins
   get 'welcome/index'
