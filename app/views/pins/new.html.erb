@@ -1,5 +1,12 @@
-<h1>New Pin</h1>
 
-<%= render 'form', pin: @pin %>
+<div class="container">
+	<h1>Crea un nuevo Pin</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<%= render 'form', pin: @pin %>
+		</div>
+	</div>
+	
+		<%= link_to 'Back', pins_path %>
 
-<%= link_to 'Back', pins_path %>
+</div>
