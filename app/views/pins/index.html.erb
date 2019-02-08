@@ -12,7 +12,7 @@
     	<div class="thumbnail">
           <%= pin.name %>
           <% if pin.photo %>
-		        <%= image_tag pin.photo, class: "img-responsive" %>
+		        <%= image_tag(pin.photo, :class => 'img-responsive') %>
           <% end %>
           <%= pin.description %>
 		      <div class="buttons" style="margin-top: 10px; margin-bottom: 10px">		     
