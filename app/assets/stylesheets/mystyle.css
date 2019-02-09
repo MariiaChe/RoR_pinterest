@@ -1,3 +1,11 @@
 h1 {
     color: red;
 }
+.img-custom {
+    width: 100px;
+    margin-top: -20px;
+}
+.img-user {
+    width: 50px;
+    border-radius: 50%;
+}
