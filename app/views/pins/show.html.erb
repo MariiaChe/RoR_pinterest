@@ -1,17 +1,27 @@
+<div class="container">
+
 <p id="notice"><%= notice %></p>
+
 <p>
   <strong>Nombre:</strong>
   <%= @pin.name %>
 </p>
-<p>
-  <strong>Photo:</strong>
-  <%= image_tag @pin.photo, class: 'img-responsive' %>
-</p>
+<p><strong>Foto:</strong></p>
+ <%= image_tag @pin.photo, class: 'img-fluid img-thumbnail', style: 'max-width: 100%;' %>
 
-<p>
+
+<p style="margin-top: 10px;">
   <strong>Description:</strong>
-  <%= @pin.description %>
-</p>
+  <div class="row"> 
+  	<div class="col-md-6 col-sm-12">
+   <%= @pin.description %>
+  </div>
+  </div>
 
-<%= link_to 'Edit', edit_pin_path(@pin) %> |
-<%= link_to 'Back', pins_path %>
+</p>	
+
+<%= link_to 'Edit', edit_pin_path(@pin), :class => 'btn btn-primary', :style => 'padding-top:3px; padding-bottom:3px;' %> |
+<%= link_to 'Back', pins_path, :class => 'btn btn-primary', :style => 'padding-top:3px; padding-bottom:3px;' %> |
+
+<%= link_to 'Mas pins de mismo usuario ', pinsof_path(@pin.user.id), :class => 'btn btn-primary', :style => 'padding-top:3px; padding-bottom:3px;' %>
+</div>
