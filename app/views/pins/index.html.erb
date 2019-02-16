@@ -8,10 +8,10 @@
    
     <% @pins.each do |pin| %>
    
-   <div class="card" style="width: 25rem;display: inline-flex;margin: 10px;"> 
+   <div class="card" style="width: 20rem;display: inline-flex;margin: 10px;"> 
            
           <% if pin.photo %>
-		        <%= image_tag(pin.photo, :class => 'img-responsive') %>
+		        <%= image_tag(pin.photo, :class => 'img-fluid') %>
           <% end %>
 
        <div class="card-body">
@@ -21,11 +21,15 @@
           
 		      <div class="buttons" style="margin-top: 10px; margin-bottom: 10px">		     
 			      <%= link_to 'Show', pin, :class => 'btn btn-primary', :style => 'padding-top:3px; padding-bottom:3px;' %>
+          <% if pin.user == current_user %>
 			      <%= link_to 'Edit', edit_pin_path(pin), :class => 'btn btn-primary', :style => 'padding-top:3px; padding-bottom:3px;' %>
-          <% if user_signed_in? %>
 			      <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary', :style => 'padding-top:3px; padding-bottom:3px;' %>
           <% end %>
 		      </div>
+          <a href="/pins/<%=pin.id%>/like" data-method="POST" ><i  class="fas fa-heart btn btn-primary"></i></a>
+          
+          <%= pin.likes.count %>
+
        </div>
     </div>
  
@@ -36,9 +40,9 @@
 
 
 <br>
-<% if user_signed_in? %>
+
   <%= link_to 'New Pin', new_pin_path, :class => 'btn btn-primary', :style => 'padding-top:3px; padding-bottom:3px;' %>
-<% end %>
+
 </div>
 
 

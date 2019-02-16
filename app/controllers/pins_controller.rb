@@ -1,6 +1,15 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except:[ :index, :show ]
+  
+  def like
+    pin = Pin.find(params[:id])
+    user = current_user
+    Like.create(pin: pin, user: current_user)
+    redirect_to pins_path
+  end
+
+
   def pinsof
     @user_id = params[:user_id]
     @user = User.find(@user_id)
@@ -63,6 +72,7 @@ class PinsController < ApplicationController
   # DELETE /pins/1
   # DELETE /pins/1.json
   def destroy
+    @pin.likes.delete_all
     @pin.destroy
     respond_to do |format|
       format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
